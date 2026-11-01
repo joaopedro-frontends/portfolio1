@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>João Pedro Gonçalves | Portfólio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        // Configuração do Tailwind para aceitar alternância por classe 'dark'
+        tailwind.config = {
+            darkMode: 'class',
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+        }
+        .glow-effect:hover {
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.15);
+        }
+        /* Cursor animado para o efeito de máquina de escrever */
+        .typewriter-cursor::after {
+            content: '|';
+            animation: blink 1s infinite;
+        }
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+    </style>
+</head>
+<body class="bg-white text-gray-900 dark:bg-[#0b0f17] dark:text-gray-100 selection:bg-blue-500/30 selection:text-blue-200 antialiased transition-colors duration-300">
+
+    <nav class="fixed top-0 left-0 w-full bg-white/80 dark:bg-[#0b0f17]/75 backdrop-blur-md border-b border-gray-200 dark:border-gray-800/60 z-50 transition-all duration-300">
+        <div class="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between relative">
+            
+            <button id="menuBtn" class="text-indigo-500 dark:text-indigo-400 p-2 focus:outline-none focus:ring-2 focus:ring-indigo-500 rounded-md transition-colors" aria-label="Abrir menu">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+
+            <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+                <span class="text-xl font-bold tracking-wide text-gray-900 dark:text-white">Portfólio</span>
+            </div>
+
+            <button id="themeToggle" class="w-12 h-6 bg-gray-300 dark:bg-indigo-600 rounded-full p-1 transition-colors duration-300 focus:outline-none flex items-center" aria-label="Alternar tema">
+                <div id="switchCircle" class="w-4 h-4 bg-white rounded-full shadow-md transition-transform duration-300 translate-x-0 dark:translate-x-6"></div>
+            </button>
+
+        </div>
+    </nav>
+
+    <div id="sidebar" class="fixed top-0 left-0 h-full w-64 bg-gray-50 dark:bg-[#0e1422] border-r border-gray-200 dark:border-gray-800 shadow-2xl z-50 transform -translate-x-full transition-transform duration-300 ease-in-out">
+        <div class="p-6 flex flex-col h-full">
+            <div class="flex justify-between items-center mb-8">
+                <span class="font-bold text-indigo-500 dark:text-blue-400 font-mono">JPG.dev</span>
+                <button id="closeBtn" class="text-gray-500 hover:text-gray-800 dark:hover:text-white">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+            <div class="flex flex-col space-y-6 text-base font-medium text-gray-600 dark:text-gray-400">
+                <a href="#sobre" class="sidebar-link hover:text-indigo-500 dark:hover:text-blue-400 transition-colors">Sobre</a>
+                <a href="#habilidades" class="sidebar-link hover:text-indigo-500 dark:hover:text-blue-400 transition-colors">Habilidades</a>
+                <a href="#projetos" class="sidebar-link hover:text-indigo-500 dark:hover:text-blue-400 transition-colors">Projetos</a>
+                <a href="#contato" class="sidebar-link hover:text-indigo-500 dark:hover:text-blue-400 transition-colors">Contato</a>
+            </div>
+        </div>
+    </div>
+    <div id="sidebarOverlay" class="fixed inset-0 bg-black/40 z-40 hidden transition-opacity duration-300"></div>
+
+    <section class="w-full min-h-screen flex items-center justify-center relative px-6 md:px-12 overflow-hidden bg-gray-50 dark:bg-[#0b0f17] pt-16">
+        <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-blue-500/5 dark:bg-blue-500/5 rounded-full blur-[120px] pointer-events-none"></div>
+        
+        <div class="max-w-5xl w-full grid grid-cols-1 md:grid-cols-2 gap-12 items-center z-10 py-12">
+            
+            <div class="text-left order-2 md:order-1">
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight mb-4 text-gray-900 dark:text-white leading-tight min-h-[120px] sm:min-h-[140px] md:min-h-[auto]">
+                    Olá, eu sou o <br class="hidden sm:inline md:hidden">
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-blue-600 dark:from-blue-400 dark:to-indigo-400">João Pedro</span>
+                </h1>
+                
+                <div class="min-h-[84px] sm:min-h-[96px] mb-8">
+                    <p id="typewriter-text" class="text-lg sm:text-xl text-gray-600 dark:text-gray-400 font-light leading-relaxed typewriter-cursor"></p>
+                </div>
+
+                <div class="flex flex-col sm:flex-row justify-start items-center gap-4">
+                    <a href="#projetos" class="w-full sm:w-auto text-center bg-indigo-600 hover:bg-indigo-500 dark:bg-blue-600 dark:hover:bg-blue-500 text-white font-medium px-8 py-3 rounded-lg transition-all duration-200 shadow-lg shadow-indigo-500/10 dark:shadow-blue-500/10">
+                        Ver Projetos
+                    </a>
+                    <a href="#contato" class="w-full sm:w-auto text-center border border-gray-300 dark:border-gray-700 hover:border-indigo-500 dark:hover:border-blue-400 text-gray-700 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-blue-400 font-medium px-8 py-3 rounded-lg transition-all duration-200">
+                        Entrar em contato
+                    </a>
+                </div>
+            </div>
+
+            <div class="flex justify-center md:justify-end order-1 md:order-2">
+                <div class="relative w-64 h-64 sm:w-80 sm:h-80 lg:w-96 lg:h-96 rounded-full p-2 border-4 border-indigo-500/30 dark:border-blue-400/20 bg-gradient-to-b from-indigo-500/10 to-transparent flex items-center justify-center overflow-hidden">
+                    <img src="eu.jpg" alt="Foto de João Pedro" class="w-full h-full object-cover rounded-full">
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="sobre" class="animated-section w-full py-28 px-6 bg-gray-50/50 dark:bg-[#0e1422]/50 border-t border-b border-gray-100 dark:border-gray-800/40 opacity-0 -translate-x-12 transition-all duration-1000 ease-out will-change-transform">
+        <div class="max-w-3xl mx-auto">
+            <h2 class="text-2xl sm:text-3xl font-bold mb-8 flex items-center text-gray-900 dark:text-white">
+                <span class="text-indigo-600 dark:text-blue-400 font-mono text-xl mr-3">01.</span>Sobre mim
+            </h2>
+            <div class="text-gray-600 dark:text-gray-400 space-y-6 text-base sm:text-lg leading-relaxed font-light">
+                <p>
+                    Sou um desenvolvedor Front-end movido pela criação de layouts fluídos e experiências digitais polidas. Atualmente, curso <strong class="text-gray-900 dark:text-gray-200 font-medium">Análise e Desenvolvimento de Sistemas (ADS) na UniCarioca</strong>, aliando a base acadêmica com a prática diária de desenvolvimento.
+                </p>
+                <p>
+                    Como freelancer, dedico-me a transformar ideias de negócios em códigos limpos, semânticos e totalmente responsivos. Valorizo a simplicidade estética, o código bem estruturado e o impacto visual que uma boa interface gera para o usuário final.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="habilidades" class="animated-section w-full py-28 px-6 bg-gray-50 dark:bg-[#0b0f17] opacity-0 -translate-x-12 transition-all duration-1000 ease-out will-change-transform">
+        <div class="max-w-3xl mx-auto">
+            <h2 class="text-2xl sm:text-3xl font-bold mb-12 flex items-center text-gray-900 dark:text-white">
+                <span class="text-indigo-600 dark:text-blue-400 font-mono text-xl mr-3">02.</span>Habilidades
+            </h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                
+                <div class="flex items-center gap-4 bg-white dark:bg-[#0e1422]/40 p-4 rounded-xl border border-gray-200 dark:border-gray-800/80 glow-effect transition-all duration-300">
+                    <div class="w-12 h-12 flex items-center justify-center shrink-0">
+                        <svg class="w-10 h-10 text-[#e34f26]" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M1.5 0h21l-1.91 21.563L11.977 24l-8.564-2.438L1.5 0zm7.031 9.75l-.232-2.625 11.02-.002.237-2.625H5.41l.693 7.877h8.583l-.313 3.49-2.396.648-2.398-.65-.154-1.73H6.8l.3 3.42 4.873 1.347 4.873-1.348.653-7.228H8.531z"/>
+                        </svg>
+                    </div>
+                    <div class="text-left">
+                        <h3 class="text-sm font-bold text-gray-900 dark:text-white leading-tight">HTML5</h3>
+                        <p class="text-xs text-gray-500 dark:text-gray-400 mt-0.5">Semântica & Acessibilidade</p>
+                    </div>
+                </div>
+
+                <div class="flex items-center gap-4 bg-white dark:bg-[#0e1422]/40 p-4 rounded-xl border border-gray-200 dark:border-gray-800/80 glow-effect transition-all duration-300">
+                    <div class="w-12 h-12 flex items-center justify-center shrink-0">
+                        <svg class="w-10 h-10 text-[#1572b6]" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M1.5 0h21l-1.91 21.563L11.977 24l-8.564-2.438L1.5 0zm7.031 9.75l-.232-2.625 11.02-.002.237-2.625H5.41l.693 7.877h8.583l-.313 3.49-2.396.648-2.398-.65-.154-1.73H6.8l.3 3.42 4.873 1.347 4.873-1.348.653-7.228H8.531z"/>
+                        </svg>
+                    </div>
+                    <div class="text-left">
+                        <h3 class="text-sm font-bold text-gray-900 dark:text-white leading-tight">CSS3</h3>
+                        <p class="text-xs text-gray-500 dark:text-gray-400 mt-0.5">Flexbox, Grid & Layouts</p>
+                    </div>
+                </div>
+
+                <div class="flex items-center gap-4 bg-white dark:bg-[#0e1422]/40 p-4 rounded-xl border border-gray-200 dark:border-gray-800/80 glow-effect transition-all duration-300">
+                    <div class="w-12 h-12 flex items-center justify-center shrink-0">
+                        <svg class="w-10 h-10 text-[#f7df1e]" viewBox="0 0 448 512" fill="currentColor">
+                            <path d="M0 32v448h448V32H0zm243.8 349.4c0 43.6-25.6 63.5-62.1 63.5-33.7 0-53.2-17.4-63.2-38.5l34.3-20.7c6.6 11.7 12.6 21.6 27.1 21.6 13.8 0 22.6-5.4 22.6-26.5V231.6h41.4v150.2zm99.5 63.5c-39.1 0-64.4-18.6-76.7-43l34.3-19.8c7.5 13.5 19.8 24.9 39.1 24.9 19.2 0 30.2-8.1 30.2-22.1 0-14.9-11.4-20.1-37.1-31.2-36.7-15.9-60.7-32.7-60.7-71.3 0-36.4 28.5-62.9 68.1-62.9 36.4 0 57 15.6 67.8 37.9l-32.4 20.7c-6-11.7-15-18.9-34.6-18.9-17.4 0-25.3 8.7-25.3 19.2 0 13.2 9.9 17.7 33.1 27.7 41.4 17.7 65 31.5 65 74.3.1 43.8-31.5 64.6-70.9 64.6z"/>
+                        </svg>
+                    </div>
+                    <div class="text-left">
+                        <h3 class="text-sm font-bold text-gray-900 dark:text-white leading-tight">JavaScript</h3>
+                        <p class="text-xs text-gray-500 dark:text-gray-400 mt-0.5">Lógica, DOM & ES6+</p>
+                    </div>
+                </div>
+
+                <div class="flex items-center gap-4 bg-white dark:bg-[#0e1422]/40 p-4 rounded-xl border border-gray-200 dark:border-gray-800/80 glow-effect transition-all duration-300">
+                    <div class="w-12 h-12 flex items-center justify-center shrink-0">
+                        <svg class="w-10 h-10 text-[#38bdf8]" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12.001 4.8c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8.913.228 1.565.89 2.288 1.624C13.666 10.618 15.027 12 18.001 12c3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.913-.228-1.565-.89-2.288-1.624C16.337 6.182 14.976 4.8 12.001 4.8zm-6 7.2c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8.913.228 1.565.89 2.288 1.624 1.177 1.194 2.538 2.576 5.512 2.576 3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.913-.228-1.565-.89-2.288-1.624C10.337 13.382 8.976 12 6.001 12z"/>
+                        </svg>
+                    </div>
+                    <div class="text-left">
+                        <h3 class="text-sm font-bold text-gray-900 dark:text-white leading-tight">Tailwind CSS</h3>
+                        <p class="text-xs text-gray-500 dark:text-gray-400 mt-0.5">Utility-First & Responsividade</p>
+                    </div>
+                </div>
+
+                <div class="flex items-center gap-4 bg-white dark:bg-[#0e1422]/40 p-4 rounded-xl border border-gray-200 dark:border-gray-800/80 glow-effect transition-all duration-300">
+                    <div class="w-12 h-12 flex items-center justify-center shrink-0">
+                        <svg class="w-10 h-10 text-[#00d8ff] animate-[spin_20s_linear_infinite]" viewBox="-11.5 -10.23174 23 20.46348" fill="none" stroke="currentColor" stroke-width="1">
+                            <ellipse rx="11" ry="4.2"/>
+                            <ellipse rx="11" ry="4.2" transform="rotate(60)"/>
+                            <ellipse rx="11" ry="4.2" transform="rotate(120)"/>
+                            <circle r="2" fill="currentColor"/>
+                        </svg>
+                    </div>
+                    <div class="text-left">
+                        <h3 class="text-sm font-bold text-gray-900 dark:text-white leading-tight">React</h3>
+                        <p class="text-xs text-gray-500 dark:text-gray-400 mt-0.5">Componentização & Estado</p>
+                    </div>
+                </div>
+
+                <div class="flex items-center gap-4 bg-white dark:bg-[#0e1422]/40 p-4 rounded-xl border border-gray-200 dark:border-gray-800/80 glow-effect transition-all duration-300">
+                    <div class="w-12 h-12 flex items-center justify-center shrink-0">
+                        <svg class="w-10 h-10 text-black dark:text-white" viewBox="0 0 180 180" fill="none">
+                            <mask id="nextLogoMask" maskUnits="userSpaceOnUse" x="0" y="0" width="180" height="180">
+                                <circle cx="90" cy="90" r="90" fill="black" />
+                            </mask>
+                            <g mask="url(#nextLogoMask)">
+                                <circle cx="90" cy="90" r="90" class="fill-white dark:fill-transparent" stroke="currentColor" stroke-width="6"/>
+                                <path d="M149.508 157.52L69.142 54H54V125.918H65.6171V68.7674L137.383 160.73C141.745 159.837 145.811 158.752 149.508 157.52Z" fill="currentColor" />
+                                <path d="M115 54H127V126H115V54Z" fill="currentColor" />
+                            </g>
+                        </svg>
+                    </div>
+                    <div class="text-left">
+                        <h3 class="text-sm font-bold text-gray-900 dark:text-white leading-tight">Next.js</h3>
+                        <p class="text-xs text-gray-500 dark:text-gray-400 mt-0.5">SSR, SSG & SPA Framework</p>
+                    </div>
+                </div>
+
+                <!-- Novo Card: Python -->
+                <div class="flex items-center gap-4 bg-white dark:bg-[#0e1422]/40 p-4 rounded-xl border border-gray-200 dark:border-gray-800/80 glow-effect transition-all duration-300">
+                    <div class="w-12 h-12 flex items-center justify-center shrink-0">
+                        <svg class="w-10 h-10 text-[#3776ab]" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M14.25.18c-1.58-.12-3.13.25-4.38 1.03-1.25.78-2.09 1.9-2.37 3.19v2.24h4.75v1.12H5.87c-1.63 0-3.04 1.12-3.37 2.72-.44 2.13-.44 4.3 0 6.43.33 1.6 1.74 2.72 3.37 2.72h1.62v-2.75c0-1.74 1.41-3.15 3.15-3.15h4.75c1.74 0 3.15-1.41 3.15-3.15V3.33c0-1.69-1.37-3.07-3.07-3.15H14.25zM9.5 2.87c.58 0 1.05.47 1.05 1.05s-.47 1.05-1.05 1.05-1.05-.47-1.05-1.05.47-1.05 1.05-1.05zM14.5 17.58c-.58 0-1.05.47-1.05 1.05s.47 1.05 1.05 1.05 1.05-.47 1.05-1.05-.47-1.05-1.05-1.05z"/>
+                            <path d="M9.75 23.82c1.58.12 3.13-.25 4.38-1.03 1.25-.78 2.09-1.9 2.37-3.19v-2.24h-4.75v-1.12h5.88c1.63 0 3.04-1.12 3.37-2.72.44-2.13.44-4.3 0-6.43-.33-1.6-1.74-2.72-3.37-2.72h-1.62v2.75c0 1.74-1.41 3.15-3.15 3.15H7.75c-1.74 0-3.15 1.41-3.15 3.15v5.82c0 1.69 1.37 3.07 3.07 3.15h2.08zM14.5 21.13c-.58 0-1.05-.47-1.05-1.05s.47-1.05 1.05-1.05 1.05.47 1.05 1.05-.47 1.05-1.05 1.05z"/>
+                        </svg>
+                    </div>
+                    <div class="text-left">
+                        <h3 class="text-sm font-bold text-gray-900 dark:text-white leading-tight">Python</h3>
+                        <p class="text-xs text-gray-500 dark:text-gray-400 mt-0.5">Automação & Lógica</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="projetos" class="animated-section w-full py-28 px-6 bg-gray-50/50 dark:bg-[#0e1422]/50 border-t border-b border-gray-100 dark:border-gray-800/40 opacity-0 -translate-x-12 transition-all duration-1000 ease-out will-change-transform">
+        <div class="max-w-5xl mx-auto">
+            <h2 class="text-2xl sm:text-3xl font-bold mb-3 flex items-center text-gray-900 dark:text-white">
+                <span class="text-indigo-600 dark:text-blue-400 font-mono text-xl mr-3">03.</span>Projetos
+            </h2>
+            <p class="text-gray-500 dark:text-gray-400 text-sm mb-12 font-light">Uma vitrine com os meus principais trabalhos freelances, parcerias e códigos autorais. (Clique no card para acessar)</p>
+            
+            <!-- Projetos em Destaque -->
+            <div class="mb-16">
+                <div class="flex items-center mb-6">
+                    <h3 class="text-lg font-bold text-gray-900 dark:text-white relative after:content-[''] after:block after:w-12 after:h-[2px] after:bg-indigo-500 dark:after:bg-purple-500 after:mt-1">Destaques</h3>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    
+                    <!-- Card 1 (Destaque com Link) -->
+                    <a href="https://ampneus.com.br" target="_blank" rel="noopener noreferrer" class="relative group h-48 rounded-xl overflow-hidden bg-gray-900 border border-gray-200 dark:border-gray-800 shadow-md transition-all duration-300 hover:scale-[1.02] cursor-pointer block">
+                        <img src="ampneus site.jpeg" alt="Prévia do projeto AM Pneus" class="absolute inset-0 w-full h-full object-cover opacity-40 group-hover:opacity-20 transition-opacity duration-300">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
+                        <div class="absolute inset-0 flex flex-col justify-center items-center text-center p-4">
+                            <h4 class="text-xl font-bold text-white mb-2 tracking-wide flex items-center gap-2">
+                                AM Pneus 
+                                <svg class="w-4 h-4 opacity-70 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                            </h4>
+                            <div class="flex items-center gap-2 text-purple-400 text-sm font-mono bg-black/40 px-3 py-1 rounded-full backdrop-blur-sm">
+                                <span>HTML</span> •
+                                <span>JavaScript</span> •
+                                <span>Python</span>
+                            </div>
+                        </div>
+                        <div class="absolute bottom-0 left-0 w-full h-[3px] bg-gradient-to-r from-indigo-500 to-purple-500"></div>
+                    </a>
+
+                    <!-- Card 2 (Destaque com Link) -->
+                    <a href="https://atelienaldaviana.com.br" target="_blank" rel="noopener noreferrer" class="relative group h-48 rounded-xl overflow-hidden bg-gray-900 border border-gray-200 dark:border-gray-800 shadow-md transition-all duration-300 hover:scale-[1.02] cursor-pointer block">
+                        <img src="nalda viana.jpeg" alt="Prévia do projeto Ateliê Nalda Viana" class="absolute inset-0 w-full h-full object-cover opacity-40 group-hover:opacity-20 transition-opacity duration-300">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
+                        <div class="absolute inset-0 flex flex-col justify-center items-center text-center p-4">
+                            <h4 class="text-xl font-bold text-white mb-2 tracking-wide flex items-center gap-2">
+                                Ateliê Nalda Viana
+                                <svg class="w-4 h-4 opacity-70 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                            </h4>
+                            <div class="flex items-center gap-2 text-purple-400 text-sm font-mono bg-black/40 px-3 py-1 rounded-full backdrop-blur-sm">
+                                <span>HTML</span> •
+                                <span>CSS</span> •
+                                <span>JavaScript</span>
+                            </div>
+                        </div>
+                        <div class="absolute bottom-0 left-0 w-full h-[3px] bg-gradient-to-r from-indigo-500 to-purple-500"></div>
+                    </a>
+
+                    <!-- Card 3 (Destaque com Link) -->
+                    <a href="https://pardito.com.br" target="_blank" rel="noopener noreferrer" class="relative group h-48 rounded-xl overflow-hidden bg-gray-900 border border-gray-200 dark:border-gray-800 shadow-md transition-all duration-300 hover:scale-[1.02] cursor-pointer block">
+                        <img src="pardito.jpeg" alt="Prévia do projeto Pardito Tips" class="absolute inset-0 w-full h-full object-cover opacity-40 group-hover:opacity-20 transition-opacity duration-300">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
+                        <div class="absolute inset-0 flex flex-col justify-center items-center text-center p-4">
+                            <h4 class="text-xl font-bold text-white mb-2 tracking-wide flex items-center gap-2">
+                                Pardito Tips
+                                <svg class="w-4 h-4 opacity-70 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                            </h4>
+                            <div class="flex items-center gap-2 text-purple-400 text-sm font-mono bg-black/40 px-3 py-1 rounded-full backdrop-blur-sm">
+                                <span>HTML</span> •
+                                <span>Tailwind</span> •
+                                <span>JavaScript</span>
+                            </div>
+                        </div>
+                        <div class="absolute bottom-0 left-0 w-full h-[3px] bg-gradient-to-r from-indigo-500 to-purple-500"></div>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="contato" class="animated-section w-full py-32 px-6 bg-gray-50 dark:bg-[#0b0f17] opacity-0 -translate-x-12 transition-all duration-1000 ease-out will-change-transform">
+        <div class="max-w-3xl mx-auto text-center relative">
+            <h2 class="text-3xl sm:text-4xl font-bold mb-4 text-gray-900 dark:text-white">Vamos construir algo juntos?</h2>
+            <p class="text-gray-600 dark:text-gray-400 mb-8 max-w-md mx-auto text-sm sm:text-base font-light leading-relaxed">
+                Estou sempre aberto a novos projetos freelances, parcerias e conexões no mercado. Sinta-se à vontade para me chamar!
+            </p>
+            <div class="flex flex-wrap gap-4 justify-center items-center">
+                <a href="mailto:contato.joaopedro13@gmail.com" class="text-sm font-mono text-gray-700 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-blue-400 px-5 py-2.5 border border-gray-300 dark:border-gray-800 hover:border-indigo-500/40 dark:hover:border-blue-400/40 rounded-lg bg-white dark:bg-[#0e1422]/20 transition-all duration-200">
+                    contato.joaopedro13@gmail.com
+                </a>
+                <a href="https://www.linkedin.com/in/joãopedro-frontend/" target="_blank" class="text-sm font-mono text-gray-700 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-blue-400 px-5 py-2.5 border border-gray-300 dark:border-gray-800 hover:border-indigo-500/40 dark:hover:border-blue-400/40 rounded-lg bg-white dark:bg-[#0e1422]/20 transition-all duration-200">
+                    LinkedIn
+                </a>
+                <a href="https://github.com/joaopedro-frontends" target="_blank" class="text-sm font-mono text-gray-700 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-blue-400 px-5 py-2.5 border border-gray-300 dark:border-gray-800 hover:border-indigo-500/40 dark:hover:border-blue-400/40 rounded-lg bg-white dark:bg-[#0e1422]/20 transition-all duration-200">
+                    GitHub
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="w-full py-8 text-center text-xs text-gray-500 dark:text-gray-600 border-t border-gray-200 dark:border-gray-900/60 font-mono bg-white dark:bg-[#0b0f17]">
+        <p>© 2026 João Pedro Gonçalves.</p>
+    </footer>
+
+    <script>
+        const themeToggle = document.getElementById('themeToggle');
+        const htmlElement = document.documentElement;
+
+        const menuBtn = document.getElementById('menuBtn');
+        const closeBtn = document.getElementById('closeBtn');
+        const sidebar = document.getElementById('sidebar');
+        const sidebarOverlay = document.getElementById('sidebarOverlay');
+        const sidebarLinks = document.querySelectorAll('.sidebar-link');
+
+        // 1. Controle do Tema (Dark/Light)
+        themeToggle.addEventListener('click', () => {
+            htmlElement.classList.toggle('dark');
+        });
+
+        // 2. Controle da Sidebar (Menu Hambúrguer)
+        function toggleSidebar() {
+            sidebar.classList.toggle('-translate-x-full');
+            sidebarOverlay.classList.toggle('hidden');
+        }
+
+        menuBtn.addEventListener('click', toggleSidebar);
+        closeBtn.addEventListener('click', toggleSidebar);
+        sidebarOverlay.addEventListener('click', toggleSidebar);
+
+        sidebarLinks.forEach(link => {
+            link.addEventListener('click', toggleSidebar);
+        });
+
+        // 3. Efeito Máquina de Escrever (Typewriter Effect)
+        const textToType = "Desenvolvedor Front-End focado em criar interfaces modernas, limpas e de alta performance.";
+        const typewriterElement = document.getElementById('typewriter-text');
+        let index = 0;
+        const typingSpeed = 35; // Velocidade em milissegundos por caractere
+
+        function typeWriter() {
+            if (index < textToType.length) {
+                typewriterElement.textContent += textToType.charAt(index);
+                index++;
+                setTimeout(typeWriter, typingSpeed);
+            }
+        }
+        typeWriter();
+
+        // 4. Animação de Scroll (IntersectionObserver)
+        const animatedSections = document.querySelectorAll('.animated-section');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.remove('opacity-0', '-translate-x-12');
+                    entry.target.classList.add('opacity-100', 'translate-x-0');
+                }
+            });
+        }, { threshold: 0.15 });
+
+        animatedSections.forEach(section => observer.observe(section));
+    </script>
+</body>
+</html>
